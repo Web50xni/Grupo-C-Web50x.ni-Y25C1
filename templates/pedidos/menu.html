@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h1>Menu El Güegüense</h1>
+<ul>
+    {% for plato in platos %}
+        <li>{{ plato.nombre}} - C$ {{ plato.precio }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

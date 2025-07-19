@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Lista de Pedidos{% endblock %}
+
+{% block content %}
+    <h2>Pedidos Recibidos</h2>
+    <ul>
+        {% for pedido in pedidos %}
+        <li>
+            <strong>{{ pedido.nombre_cliente }}</strong> - {{ pedido.fecha_pedido }} <br>
+            Direccion: {{ pedido.direccion }} <br>
+            Platos:
+            <ul>
+                {% for plato in pedido.platos.all %}
+                    <li> {{ plato.nombre }} - C$ {{ plato.precio }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
