@@ -8,6 +8,7 @@ class PedidoForm(forms.ModelForm):
         required=True,
         label="Platos del pedido"
     )
+    
 
     class Meta:
         model = Pedido
