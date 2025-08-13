@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Países</h2>
+<a href="{% url 'country_add' %}">➕ Añadir País</a>
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Acciones</th>
+    </tr>
+    {% for country in object_list %}
+    <tr>
+        <td>{{ country.country_name }}</td>
+        <td>
+            <a href="{% url 'country_edit' country.pk %}">Editar</a> |
+            <a href="{% url 'country_delete' country.pk %}">Eliminar</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="2">No hay países registrados.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

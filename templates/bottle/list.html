@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Botellas</h2>
+<a href="{% url 'bottle_add' %}">➕ Añadir Botella</a>
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Categoría</th>
+        <th>Volumen (ml)</th>
+        <th>Productor</th>
+        <th>Año</th>
+        <th>Alcohol (%)</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+    </tr>
+    {% for bottle in object_list %}
+    <tr>
+        <td>{{ bottle.full_name }}</td>
+        <td>{{ bottle.category.category_name }}</td>
+        <td>{{ bottle.volume }}</td>
+        <td>{{ bottle.producer.producer_name }}</td>
+        <td>{{ bottle.year_produced }}</td>
+        <td>{{ bottle.alcohol_percentage }}</td>
+        <td>{{ bottle.current_price }}</td>
+        <td>
+            <a href="{% url 'bottle_edit' bottle.pk %}">Editar</a> |
+            <a href="{% url 'bottle_delete' bottle.pk %}">Eliminar</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="8">No hay botellas registradas.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Regiones</h2>
+<a href="{% url 'region_add' %}">➕ Añadir Región</a>
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>País</th>
+        <th>Acciones</th>
+    </tr>
+    {% for region in object_list %}
+    <tr>
+        <td>{{ region.region_name }}</td>
+        <td>{{ region.country.country_name }}</td>
+        <td>
+            <a href="{% url 'region_edit' region.pk %}">Editar</a> |
+            <a href="{% url 'region_delete' region.pk %}">Eliminar</a>
+        </td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="3">No hay regiones registradas.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}
