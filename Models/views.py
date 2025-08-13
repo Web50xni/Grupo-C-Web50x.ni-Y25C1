@@ -134,4 +134,4 @@ class BottleDeleteView(DeleteView):
     success_url = reverse_lazy("bottle_list")
 
 
-# Manda un patito en el grupo si llegaste hasta aquí 🦆
+# Manda un patito en el grupo si llegaste hasta aquí  🦆
